@@ -1,6 +1,6 @@
 <template>
   <select v-bind:value="modelValue" @change="changeOptions">
-    <option disabled value="">Select...</option>
+    <option disabled value="">Sort options...</option>
     <option v-for="opt in options" :key="opt.value" :value="opt.value">
       {{ opt.name }}
     </option>
@@ -27,4 +27,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+select {
+  width: 120px;
+  height: 30px;
+  border: 1px solid teal;
+}
+</style>

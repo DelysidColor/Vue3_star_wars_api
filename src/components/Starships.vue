@@ -2,23 +2,32 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>API</th>
-        <th></th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Crew</th>
+        <th>Passengers</th>
+        <th>Cost</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{}}</td>
+      <tr v-for="(ship, idx) in starships.results" :key="idx">
         <td>
-          {{ idx }}
+          {{ ship.name }}
         </td>
         <td>
-          {{ link }}
+          {{ ship.model }}
         </td>
-        <td class="td-button">
-          <my-button @click="$router.push(`/${idx}/`)"> Open </my-button>
+        <td>
+          {{ ship.crew }}
+        </td>
+        <td>
+          {{ ship.passengers }}
+        </td>
+        <td>
+          <span v-if="ship.cost_in_credits !== 'unknown'">
+            {{ ship.cost_in_credits / 10000 }}kk CDT</span
+          >
+          <span v-else>Unknown</span>
         </td>
       </tr>
     </tbody>
@@ -28,7 +37,7 @@
 <script>
 export default {
   props: {
-    links: {
+    starships: {
       type: Object,
       required: true,
     },
@@ -63,11 +72,5 @@ th,
 td {
   min-width: 120px;
   padding: 10px 20px;
-}
-
-.td-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

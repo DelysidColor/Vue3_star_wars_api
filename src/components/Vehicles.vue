@@ -2,23 +2,25 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>API</th>
-        <th></th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Crew</th>
+        <th>Passengers</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{}}</td>
+      <tr v-for="(machine, idx) in vehicles.results" :key="idx">
         <td>
-          {{ idx }}
+          {{ machine.name }}
         </td>
         <td>
-          {{ link }}
+          {{ machine.model }}
         </td>
-        <td class="td-button">
-          <my-button @click="$router.push(`/${idx}/`)"> Open </my-button>
+        <td>
+          {{ machine.crew }}
+        </td>
+        <td>
+          {{ machine.passengers }}
         </td>
       </tr>
     </tbody>
@@ -28,7 +30,7 @@
 <script>
 export default {
   props: {
-    links: {
+    vehicles: {
       type: Object,
       required: true,
     },
@@ -63,11 +65,5 @@ th,
 td {
   min-width: 120px;
   padding: 10px 20px;
-}
-
-.td-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

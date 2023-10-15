@@ -1,16 +1,30 @@
 <template>
   <div class="navbar">
-    <div @click="$router.push('/')">Post App</div>
+    <div @click="$router.push('/')">Star Wars Information App</div>
     <div class="navbar_btns">
-      <my-button style="margin-left: 20px" @click="$router.push('/')"
-        >Main</my-button
+      <router-link style="margin-left: 20px" to="/">Main</router-link>
+      <router-link style="margin-left: 20px" to="/films">Films</router-link>
+      <router-link style="margin-left: 20px" to="/people">People</router-link>
+      <router-link style="margin-left: 20px" to="/planets">Planets</router-link>
+      <router-link style="margin-left: 20px" to="/species">Species</router-link>
+      <router-link style="margin-left: 20px" to="/vehicles"
+        >Vehicles</router-link
+      >
+      <router-link style="margin-left: 20px" to="/starships"
+        >Starships</router-link
       >
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    isDirectoryPath() {
+      return this.router.isActive("directory", false);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -25,5 +39,22 @@ export default {};
 
 .navbar_btns {
   margin-left: auto;
+}
+
+.navbar_btns button:hover {
+  background-color: teal;
+}
+
+.active {
+  background-color: teal;
+  color: white;
+}
+
+a {
+  background: none;
+  padding: 10px;
+  border: 1px solid teal;
+  text-decoration: none;
+  color: black;
 }
 </style>

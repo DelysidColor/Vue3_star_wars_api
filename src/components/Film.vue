@@ -2,23 +2,29 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
+        <th>Episode</th>
         <th>Title</th>
-        <th>API</th>
-        <th></th>
+        <th>Release Date</th>
+        <th>Director</th>
+        <th>Producer</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{}}</td>
+      <tr v-for="(film, idx) in films.results" :key="idx">
         <td>
-          {{ idx }}
+          {{ film.episode_id }}
         </td>
         <td>
-          {{ link }}
+          {{ film.title }}
         </td>
-        <td class="td-button">
-          <my-button @click="$router.push(`/${idx}/`)"> Open </my-button>
+        <td>
+          {{ dateTime(film.release_date) }}
+        </td>
+        <td>
+          {{ film.director }}
+        </td>
+        <td>
+          {{ film.producer }}
         </td>
       </tr>
     </tbody>
@@ -26,11 +32,18 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   props: {
-    links: {
+    films: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    dateTime(value) {
+      return moment(value).format("DD MMMM YYYY");
     },
   },
 };
@@ -63,11 +76,5 @@ th,
 td {
   min-width: 120px;
   padding: 10px 20px;
-}
-
-.td-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

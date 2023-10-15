@@ -2,23 +2,25 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>API</th>
-        <th></th>
+        <th>Name</th>
+        <th>Skin Color</th>
+        <th>Classification</th>
+        <th>Language</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{}}</td>
+      <tr v-for="(species, idx) in species.results" :key="idx">
         <td>
-          {{ idx }}
+          {{ species.name }}
         </td>
         <td>
-          {{ link }}
+          {{ species.skin_colors }}
         </td>
-        <td class="td-button">
-          <my-button @click="$router.push(`/${idx}/`)"> Open </my-button>
+        <td>
+          {{ species.classification }}
+        </td>
+        <td>
+          {{ species.language }}
         </td>
       </tr>
     </tbody>
@@ -28,7 +30,7 @@
 <script>
 export default {
   props: {
-    links: {
+    species: {
       type: Object,
       required: true,
     },
@@ -61,13 +63,7 @@ td {
 
 th,
 td {
-  min-width: 120px;
+  min-width: 80px;
   padding: 10px 20px;
-}
-
-.td-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
