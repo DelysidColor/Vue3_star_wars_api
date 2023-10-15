@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from "@/components/UI/NavBar.vue"
+import NavBar from "@/components/UI/NavBar.vue";
 export default {
   components: { NavBar },
 };
@@ -21,5 +21,6 @@ export default {
 
 .app {
   padding: 20px;
+  background: linear-gradient(180deg, black, transparent);
 }
 </style>

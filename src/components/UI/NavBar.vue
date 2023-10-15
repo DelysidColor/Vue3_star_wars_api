@@ -1,6 +1,8 @@
 <template>
   <div class="navbar">
-    <div @click="$router.push('/')">Star Wars Information App</div>
+    <div class="logo" @click="$router.push('/')">
+      <img src="@/assets/images/starwarslogo.png" alt="logo" />
+    </div>
     <div class="navbar_btns">
       <router-link style="margin-left: 20px" to="/">Main</router-link>
       <router-link style="margin-left: 20px" to="/films">Films</router-link>
@@ -18,13 +20,7 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    isDirectoryPath() {
-      return this.router.isActive("directory", false);
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -41,20 +37,27 @@ export default {
   margin-left: auto;
 }
 
-.navbar_btns button:hover {
-  background-color: teal;
+.navbar_btns a:hover {
+  background-color: rgb(175, 173, 173);
 }
 
 .active {
-  background-color: teal;
+  background-color: rgb(0, 85, 85);
   color: white;
+  transition: 0.5s;
 }
 
 a {
   background: none;
   padding: 10px;
-  border: 1px solid teal;
+  border: 1px solid black;
+  border-radius: 4px;
   text-decoration: none;
   color: black;
+  transition: 0.5s;
+}
+
+.logo img {
+  height: 45px;
 }
 </style>

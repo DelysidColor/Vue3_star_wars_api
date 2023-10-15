@@ -44,11 +44,6 @@ const routes = [
     name: "vehicles",
     component: Vehicles,
   },
-  {
-    path: "/people/:idx",
-    name: "person",
-    component: CurrentPerson,
-  },
 ];
 
 const router = createRouter({

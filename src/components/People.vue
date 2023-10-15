@@ -5,13 +5,14 @@
         <th>Name</th>
         <th>Birth Year</th>
         <th>Gender</th>
+        <th>Height</th>
+        <th>Mass</th>
         <th>Created</th>
         <th>Edited</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(person, idx) in people.results" :key="idx">
+      <tr v-for="(person, idx) in people" :key="idx">
         <td>
           {{ person.name }}
         </td>
@@ -35,15 +36,16 @@
           </div>
         </td>
         <td>
+          {{ person.height }}
+        </td>
+        <td>
+          {{ person.mass }}
+        </td>
+        <td>
           {{ dateTime(person.created) }}
         </td>
         <td>
           {{ dateTime(person.edited) }}
-        </td>
-        <td>
-          <my-button @click="$router.push(`/people/${idx + 1}/`)"
-            >Details</my-button
-          >
         </td>
       </tr>
     </tbody>
@@ -72,15 +74,14 @@ export default {
 table {
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #42b983;
+  border: 2px solid rgb(0, 85, 85);
   border-radius: 3px;
   background-color: #fff;
 }
 
 th {
-  background-color: #42b983;
+  background-color: rgb(0, 85, 85);
   color: rgba(255, 255, 255, 0.66);
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

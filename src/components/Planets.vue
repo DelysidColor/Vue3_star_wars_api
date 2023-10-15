@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(planet, idx) in planets.results" :key="idx">
+        <tr v-for="(planet, idx) in sortedPlanets" :key="idx">
           <td>
             {{ planet.name }}
           </td>
@@ -47,28 +47,25 @@ export default {
   data() {
     return {
       sortOptions: [
-        { value: "planets.results", name: "Not sorted" },
-        { value: "planet.diameter", name: "Sort by diameter" },
-        { value: "planet.population", name: "Sort by population" },
+        { value: "diameter", name: "Sort by diameter" },
+        { value: "orbital_period", name: "Sort by Orbital period" },
       ],
     };
   },
   props: {
     planets: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
-  // setup(props) {
-  //   const { selectedSort, sortedPlanets } = useSortedPlanets(planets.results);
-
-  //   return {
-  //     useSortedPlanets,
-  //     selectedSort,
-  //     sortedPlanets,
-  //     planets,
-  //   };
-  // },
+  setup(props) {
+    const { selectedSort, sortedPlanets } = useSortedPlanets(props.planets);
+    return {
+      useSortedPlanets,
+      selectedSort,
+      sortedPlanets,
+    };
+  },
 };
 </script>
 
@@ -76,15 +73,14 @@ export default {
 table {
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #42b983;
+  border: 2px solid rgb(0, 85, 85);
   border-radius: 3px;
   background-color: #fff;
 }
 
 th {
-  background-color: #42b983;
+  background-color: rgb(0, 85, 85);
   color: rgba(255, 255, 255, 0.66);
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

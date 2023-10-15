@@ -7,7 +7,7 @@ export default function usePlanets() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/planets");
-      planets.value = response.data;
+      planets.value = response.data.results;
     } catch (e) {
       alert("error");
     } finally {

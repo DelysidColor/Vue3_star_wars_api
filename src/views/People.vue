@@ -2,6 +2,9 @@
   <div>
     <People v-if="!isLoading" :people="people" />
     <my-loader v-else />
+    <!-- <div v-for="p in totalPages" :key="p" @click="setPage(p)">
+      {{ p }}
+    </div> -->
   </div>
 </template>
 
@@ -14,12 +17,15 @@ export default {
     People,
   },
   setup(props) {
-    const { people, isLoading } = usePeople();
+    const { page, people, isLoading, totalPages, setPage } = usePeople();
 
     return {
+      setPage,
       usePeople,
       people,
       isLoading,
+      totalPages,
+      page,
     };
   },
 };
