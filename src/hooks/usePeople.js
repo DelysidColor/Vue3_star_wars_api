@@ -29,7 +29,7 @@ export default function usePeople(initialPage) {
 
   const setPage = (p) => {
     page.value = p;
-    fetching(); // Вызываем fetching при смене страницы
+    fetching();
   };
 
   return {

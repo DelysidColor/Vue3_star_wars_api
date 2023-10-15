@@ -42,7 +42,7 @@ export default {
 
 .pagination-button {
   cursor: pointer;
-  padding: 4px 6px; /* Измените размеры здесь */
+  padding: 4px 6px;
   margin: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
