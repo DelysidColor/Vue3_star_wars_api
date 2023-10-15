@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(ship, idx) in starships.results" :key="idx">
+      <tr v-for="(ship, idx) in starships" :key="idx">
         <td>
           {{ ship.name }}
         </td>

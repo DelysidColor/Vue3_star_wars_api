@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(species, idx) in species.results" :key="idx">
+      <tr v-for="(species, idx) in species" :key="idx">
         <td>
           {{ species.name }}
         </td>

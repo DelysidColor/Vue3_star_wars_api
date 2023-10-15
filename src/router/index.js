@@ -6,7 +6,6 @@ import Planets from "@/views/Planets.vue";
 import Species from "@/views/Species.vue";
 import Starships from "@/views/Starships.vue";
 import Vehicles from "@/views/Vehicles.vue";
-import CurrentPerson from "@/views/CurrentPerson.vue";
 
 const routes = [
   {

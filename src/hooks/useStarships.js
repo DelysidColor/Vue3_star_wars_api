@@ -7,7 +7,7 @@ export default function useStarships() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/starships");
-      starships.value = response.data;
+      starships.value = response.data.results;
     } catch (e) {
       alert("error");
     } finally {

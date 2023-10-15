@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{}}</td>
+        <td>{{  }}</td>
         <td>
           {{ idx }}
         </td>

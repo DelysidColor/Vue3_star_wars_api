@@ -7,7 +7,7 @@ export default function useSpecies() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/species");
-      species.value = response.data;
+      species.value = response.data.results;
     } catch (e) {
       alert("error");
     } finally {

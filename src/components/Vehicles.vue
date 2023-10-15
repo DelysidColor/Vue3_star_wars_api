@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(machine, idx) in vehicles.results" :key="idx">
+      <tr v-for="(machine, idx) in vehicles" :key="idx">
         <td>
           {{ machine.name }}
         </td>

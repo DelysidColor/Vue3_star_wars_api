@@ -48,7 +48,7 @@ export default {
     return {
       sortOptions: [
         { value: "diameter", name: "Sort by diameter" },
-        { value: "orbital_period", name: "Sort by Orbital period" },
+        { value: "orbital_period", name: "Sort by orbital period" },
       ],
     };
   },

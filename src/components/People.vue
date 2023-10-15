@@ -30,7 +30,7 @@
               src="@/assets/images/female.png"
               alt="female" />
             <img
-              v-else="person.gender === 'n/a'"
+              v-else
               src="@/assets/images/notavailable.png"
               alt="not-availabel" />
           </div>

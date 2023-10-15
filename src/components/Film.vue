@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(film, idx) in films.results" :key="idx">
+      <tr v-for="(film, idx) in films" :key="idx">
         <td>
           {{ film.episode_id }}
         </td>

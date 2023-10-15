@@ -7,7 +7,7 @@ export default function useFilms() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/films");
-      films.value = response.data;
+      films.value = response.data.results;
     } catch (e) {
       alert("error");
     } finally {

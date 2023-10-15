@@ -7,7 +7,7 @@ export default function useVehicles() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/vehicles");
-      vehicles.value = response.data;
+      vehicles.value = response.data.results;
     } catch (e) {
       alert("error");
     } finally {
