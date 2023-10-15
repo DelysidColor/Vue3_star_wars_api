@@ -2,9 +2,15 @@
   <div>
     <People v-if="!isLoading" :people="people" />
     <my-loader v-else />
-    <!-- <div v-for="p in totalPages" :key="p" @click="setPage(p)">
-      {{ p }}
-    </div> -->
+    <div class="pagination">
+      <div
+        v-for="p in totalPages"
+        :key="p"
+        @click="setPage(p)"
+        class="pagination-button">
+        {{ p }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,19 +22,36 @@ export default {
   components: {
     People,
   },
-  setup(props) {
-    const { page, people, isLoading, totalPages, setPage } = usePeople();
+  setup() {
+    const { people, isLoading, totalPages, page, setPage } = usePeople(1);
 
     return {
-      setPage,
-      usePeople,
       people,
       isLoading,
       totalPages,
-      page,
+      setPage,
     };
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.pagination {
+  display: flex;
+}
+
+.pagination-button {
+  cursor: pointer;
+  padding: 4px 6px; /* Измените размеры здесь */
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.pagination-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+</style>

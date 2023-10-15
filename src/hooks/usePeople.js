@@ -1,11 +1,12 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 
-export default function usePeople() {
+export default function usePeople(initialPage) {
   const people = ref({});
-  const page = ref(1);
+  const page = ref(initialPage);
   const totalPages = ref(0);
   const isLoading = ref(true);
+
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/people", {
@@ -24,16 +25,18 @@ export default function usePeople() {
     }
   };
 
-  const setPage = function (p) {
-    page.value = p;
-  };
-
   onMounted(fetching);
+
+  const setPage = (p) => {
+    page.value = p;
+    fetching(); // Вызываем fetching при смене страницы
+  };
 
   return {
     people,
     isLoading,
     totalPages,
+    page,
     setPage,
   };
 }
