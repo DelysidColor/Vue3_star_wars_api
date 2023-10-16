@@ -7,7 +7,7 @@ export default function useLinks() {
   const fetching = async () => {
     try {
       const response = await axios.get("https://swapi.dev/api/");
-      links.value = response.data;
+      links.value = Object.entries(response.data);
     } catch (e) {
       alert("error");
     } finally {

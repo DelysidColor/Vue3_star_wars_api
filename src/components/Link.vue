@@ -10,15 +10,15 @@
     </thead>
     <tbody>
       <tr v-for="(link, idx) in links" :key="idx">
-        <td>{{  }}</td>
+        <td>{{ idx + 1 }}</td>
         <td>
-          {{ idx }}
+          {{ link[0] }}
         </td>
         <td>
-          {{ link }}
+          {{ link[1] }}
         </td>
         <td class="td-button">
-          <my-button @click="$router.push(`/${idx}/`)"> Open </my-button>
+          <my-button @click="$router.push(link[0])"> Open </my-button>
         </td>
       </tr>
     </tbody>
@@ -32,6 +32,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      rowNumber: 0,
+    };
   },
 };
 </script>
