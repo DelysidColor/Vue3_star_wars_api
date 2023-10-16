@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <People v-if="!isLoading" :people="people" />
-    <my-loader v-else />
-    <div class="pagination">
-      <div
-        v-for="p in totalPages"
-        :key="p"
-        @click="setPage(p)"
-        class="pagination-button">
-        {{ p }}
+  <div class="wrapper">
+    <People :people="people" />
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <div
+          v-for="pageNumber in displayedPages"
+          :key="pageNumber"
+          @click="setPage(pageNumber)"
+          :class="[
+            'pagination-button',
+            { 'active-button': pageNumber === page },
+          ]">
+          {{ pageNumber }}
+        </div>
       </div>
+      <my-loader v-if="isLoading" />
     </div>
   </div>
 </template>
 
 <script>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 import People from "@/components/People.vue";
 import usePeople from "@/hooks/usePeople";
 
@@ -23,19 +30,53 @@ export default {
     People,
   },
   setup() {
-    const { people, isLoading, totalPages, page, setPage } = usePeople(1);
+    const route = useRoute();
+    const initialPage = Number(route.query.page) || 1;
+    const { people, isLoading, totalPages, page, setPage } =
+      usePeople(initialPage);
+
+    const maxDisplay = 5;
+
+    const displayedPages = computed(() => {
+      const maxPages = totalPages.value;
+      let startPage = 1;
+      let endPage = maxPages;
+
+      if (maxPages > maxDisplay) {
+        const halfDisplay = Math.floor(maxDisplay / 2);
+        if (page.value > halfDisplay) {
+          startPage = page.value - halfDisplay;
+        }
+        endPage = Math.min(startPage + maxDisplay - 1, maxPages);
+      }
+
+      return Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      );
+    });
 
     return {
       people,
       isLoading,
       totalPages,
+      page,
       setPage,
+      displayedPages,
     };
   },
 };
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pagination-wrapper {
+  display: flex;
+}
 .pagination {
   display: flex;
 }
@@ -51,6 +92,11 @@ export default {
 }
 
 .pagination-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.active-button {
   background-color: #333;
   color: #fff;
 }

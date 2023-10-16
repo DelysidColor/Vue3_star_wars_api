@@ -1,5 +1,5 @@
 <template>
-  <div class="loader" style="margin-top: 10%; margin-left: 45%">
+  <div class="loader" style="margin-top: 5%; margin-left: 45%">
     <div class="circle1"></div>
     <div class="circle2"></div>
     <div class="circle3"></div>
