@@ -33,11 +33,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      rowNumber: 0,
-    };
-  },
 };
 </script>
 
